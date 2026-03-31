@@ -1,0 +1,15 @@
+{
+  "n_units_total": 37,
+  "n_fault_units": 21,
+  "n_normal_units": 16,
+  "fault_mean_score": 3.6337586615876725,
+  "normal_mean_score": 3.612538328647446,
+  "mwu_statistic": 182.0,
+  "mwu_p_onetail": 0.3394850041659926,
+  "rank_auc": 0.5416666666666666,
+  "perm_p_onetail": 0.2862,
+  "precision_at_5": 0.6,
+  "precision_at_10": 0.6,
+  "precision_at_15": 0.5333333333333333,
+  "random_baseline_prec": 0.5675675675675675
+}

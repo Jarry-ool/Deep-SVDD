@@ -1,0 +1,45 @@
+# Hyperparameters used in:
+# "Anti-Collapse Deep SVDD for Unsupervised Fault Detection in Power Transformers"
+# Submitted to IEEE Transactions on Industrial Informatics
+# Corresponding author: Yao Yuan (yuanyao@csg.cn)
+
+model:
+  class: AnomalyModelV5
+  branch_mode: hetero
+  latent_dim: 512
+  image_size: 224
+
+svdd:
+  radius_penalty_weight: 0.1
+  diversity_penalty_weight: 0.05
+
+vae:
+  beta_max: 1.0
+  beta_warmup_epochs: 5
+
+stage1:
+  epochs: 15          # early stopping applied
+  batch_size: 32
+  lr: 1.0e-4
+  optimizer: AdamW
+
+stage2:
+  pseudo_label_low_pct: 20    # normal threshold (20th percentile of score distribution)
+  pseudo_label_high_pct: 80   # fault threshold (80th percentile)
+
+stage3:
+  epochs: 59                  # early stopping applied; peak F1 at epoch 44
+  mmd_weight: 0.1
+  head: MLP
+
+data:
+  unlabeled_segments: 2024188
+  training_files: 236351
+  labeled_val_samples: 2249
+  labeled_test_samples: 2250
+  fs_hz: 8192
+  signal_length: 8192
+
+hardware:
+  gpu: NVIDIA A40
+  stage1_training_time_approx: "~7 hours"
